@@ -7,7 +7,7 @@ const _TIMEOUT: number = 1000
 
 export async function getFingerprintData(): Promise<componentInterface>  {
     try {
-        const promiseMap: Record<string, Promise<componentInterface>> = await getComponentPromises()
+        const promiseMap: Record<string, Promise<componentInterface>> = getComponentPromises()
         const keys: string[] = Object.keys(promiseMap)
         const promises: Promise<componentInterface>[] = Object.values(promiseMap)
         const resolvedValues: (componentInterface | undefined)[] = await raceAll(promises, _TIMEOUT, timeoutInstance);
