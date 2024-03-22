@@ -4,7 +4,9 @@ import { mostFrequentValuesInArrayOfDictionaries } from '../../utils/getMostFreq
 const _RETRIES = 3;
 const permission_keys = [
     'accelerometer',
-    'background-sync', 'bluetooth',
+    'accessibility', 'accessibility-events',
+    'ambient-light-sensor',
+    'background-fetch', 'background-sync', 'bluetooth',
     'camera',
     'clipboard-read',
     'clipboard-write',
