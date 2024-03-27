@@ -2,8 +2,8 @@ import { componentInterface, includeComponent } from '../../factory';
 import { mostFrequentValuesInArrayOfDictionaries } from '../../utils/getMostFrequent';
 import { options } from '../../fingerprint/options';
 
-const _RETRIES = options.retries || 3;
-const permission_keys = options.permissions_to_check || [
+const _RETRIES = options?.retries || 3;
+const permission_keys = options?.permissions_to_check || [
     'accelerometer',
     'accessibility', 'accessibility-events',
     'ambient-light-sensor',

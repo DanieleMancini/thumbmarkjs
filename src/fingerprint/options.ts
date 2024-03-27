@@ -20,4 +20,6 @@ export function setOption<K extends keyof optionsInterface>(key: K, value: optio
     if ([ 'retries', 'timeout'].includes(key) && typeof value !== 'number')
         throw new Error('The value of retries must be a number');
     options[key] = value;
+    console.log(`Option ${key} set to ${value}`);
+    console.log(options);
 }
