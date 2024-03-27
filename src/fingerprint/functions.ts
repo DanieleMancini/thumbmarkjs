@@ -4,7 +4,7 @@ import { raceAll, raceAllPerformance} from '../utils/raceAll'
 import { options } from './options'
 
 const _TIMEOUT: number = options?.timeout || 1000;
-
+console.log(`Timeout set to ${_TIMEOUT}`)
 export async function getFingerprintData(): Promise<componentInterface>  {
     try {
         const promiseMap: Record<string, Promise<componentInterface>> = getComponentPromises()
