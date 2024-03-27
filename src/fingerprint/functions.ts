@@ -3,14 +3,15 @@ import { hash } from '../utils/hash'
 import { raceAll, raceAllPerformance} from '../utils/raceAll'
 import { options } from './options'
 
-const _TIMEOUT: number = options?.timeout || 1000;
-console.log(`Timeout set to ${_TIMEOUT}`)
+// const _TIMEOUT: number = options?.timeout || 1000;
+// console.log(`Timeout set to ${_TIMEOUT}`)
 export async function getFingerprintData(): Promise<componentInterface>  {
     try {
         const promiseMap: Record<string, Promise<componentInterface>> = getComponentPromises()
         const keys: string[] = Object.keys(promiseMap)
         const promises: Promise<componentInterface>[] = Object.values(promiseMap)
-        const resolvedValues: (componentInterface | undefined)[] = await raceAll(promises, _TIMEOUT, timeoutInstance);
+        const resolvedValues: (componentInterface | undefined)[] = await raceAll(promises, options?.timeout || 1000, timeoutInstance);
+        console.log(options?.timeout)
         const validValues: componentInterface[] = resolvedValues.filter((value): value is componentInterface => value !== undefined);
         const resolvedComponents: Record<string, componentInterface> = {};
         validValues.forEach((value, index) => {
@@ -63,7 +64,7 @@ export async function getFingerprintPerformance() {
         const promiseMap = getComponentPromises()
         const keys = Object.keys(promiseMap)
         const promises = Object.values(promiseMap)
-        const resolvedValues = await raceAllPerformance(promises, _TIMEOUT, timeoutInstance )
+        const resolvedValues = await raceAllPerformance(promises, options?.timeout || 1000, timeoutInstance )
         const resolvedComponents: { [key: string]: any } = {
             elapsed: {}
         }
