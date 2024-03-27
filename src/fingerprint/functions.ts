@@ -3,7 +3,7 @@ import { hash } from '../utils/hash'
 import { raceAll, raceAllPerformance} from '../utils/raceAll'
 import { options } from './options'
 
-const _TIMEOUT: number = 3000
+const _TIMEOUT: number = options.timeout || 1000;
 
 export async function getFingerprintData(): Promise<componentInterface>  {
     try {

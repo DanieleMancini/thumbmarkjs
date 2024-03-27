@@ -23,6 +23,7 @@ interface optionsInterface {
     canvas_runs?: number;
     permissions_to_check?: PermissionName[];
     retries?: number;
+    timeout?: number;
 }
 declare function setOption<K extends keyof optionsInterface>(key: K, value: optionsInterface[K]): void;
 
