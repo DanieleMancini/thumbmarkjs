@@ -2,7 +2,7 @@ import { componentInterface, includeComponent } from '../../factory';
 import { mostFrequentValuesInArrayOfDictionaries } from '../../utils/getMostFrequent';
 import { options } from '../../fingerprint/options';
 
-const _RETRIES = options?.retries || 3;
+// const _RETRIES = options?.retries || 3;
 const permission_keys = options?.permissions_to_check || [
     'accelerometer',
     'accessibility', 'accessibility-events',
@@ -26,7 +26,7 @@ const permission_keys = options?.permissions_to_check || [
 ] as PermissionName[];
 
 export default async function getBrowserPermissions(): Promise<componentInterface> {
-    const permissionPromises: Promise<componentInterface>[] = Array.from({length: _RETRIES}, () => getBrowserPermissionsOnce() );
+    const permissionPromises: Promise<componentInterface>[] = Array.from({length: options?.retries || 3}, () => getBrowserPermissionsOnce() );
     return Promise.all(permissionPromises).then((resolvedPermissions) => {
         const permission = mostFrequentValuesInArrayOfDictionaries(resolvedPermissions, permission_keys);
         return permission;
